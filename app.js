@@ -76,9 +76,9 @@ app.use(async (ctx, next) => {
       ctx.body.path = ctx.path
       ctx.body.query = ctx.query
       ctx.body.body = ctx.request.body
-      ctx.body._req = ctx.request
-      ctx.body._res = ctx.response
-      ctx.body.apiV = '1.0'
+      // ctx.body._req = ctx.request
+      // ctx.body._res = ctx.response
+      // ctx.body.apiV = '1.0'
     }
   }
 })
