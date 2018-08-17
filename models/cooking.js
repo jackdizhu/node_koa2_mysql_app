@@ -30,10 +30,13 @@ exports.findOne = function (where) {
 }
 
 // 通过用户名查找用户
-exports.find = function (where, limit) {
+exports.find = function (where, limit, page) {
+  limit = limit || 10
+  page = page || 1
   return Cooking.findAll({
     where: where,
-    limit: limit || 10
+    limit: limit,
+    offset: limit * (page - 1)
   })
 }
 
