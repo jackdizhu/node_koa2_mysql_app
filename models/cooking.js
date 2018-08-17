@@ -60,3 +60,12 @@ exports.update = function (Cooking) {
     }
   })
 }
+
+// 通过 ID 查找
+// exports.delete = function (Cooking) {
+//   return Cooking.destroy({
+//     where: {
+//       id: Cooking.id
+//     }
+//   })
+// }

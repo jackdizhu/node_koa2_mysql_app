@@ -14,7 +14,6 @@ router.get('/', async (ctx, next) => {
 
 router.get('/get_list', async (ctx, next) => {
   let cookingType = ctx.query.cookingType || 'chuancai'
-
   let data = await cookingModel.find({type: cookingType}, 20, 1)
 
   ctx.body = {
