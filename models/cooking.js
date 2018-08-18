@@ -1,4 +1,5 @@
 'use strict'
+var Sequelize = require('sequelize')
 let Cooking = require('./index').Cooking
 
 // 添加新用户
@@ -38,6 +39,15 @@ exports.find = function (where, limit, page) {
     limit: limit,
     offset: limit * (page - 1)
   })
+}
+
+// 统计数量
+exports.count = async function (where) {
+  let count = await Cooking.findAll({
+    attributes: [[Sequelize.fn('COUNT', Sequelize.col('id')), 'count']],
+    where: where
+  })
+  return count[0] && count[0].get && count[0].get('count')
 }
 
 // 通过 ID 查找
