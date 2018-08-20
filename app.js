@@ -23,6 +23,9 @@ const api = require('./routes/api')
 const log = require('./com/log')
 global.log = log()
 
+// 全局变量 缓存
+global.dateData = {}
+
 // error handler
 onerror(app)
 
