@@ -1,6 +1,7 @@
 const router = require('koa-router')()
 const cookingModel = require('../models/cooking')
 const moment = require('moment')
+const pagesize = 20
 // const log = require('../com/log')()
 
 router.prefix('/api')
@@ -13,13 +14,13 @@ let random = (min, max) => {
 // 生成 随机推荐数据
 async function get_listRandom (_obj) {
   let arr = []
-  let pagesize = 1
+  let _pagesize = 1
   let page = 1
   for (let i = 0; i < cookingType.length; i++) {
     let item = cookingType[i]
     let count = await cookingModel.count({type: item})
     page = random(1, count + 1)
-    let data = await cookingModel.find({type: item}, pagesize, page)
+    let data = await cookingModel.find({type: item}, _pagesize, page)
     arr.push(data[0])
   }
   global.dateData.listRandom = arr
@@ -27,7 +28,6 @@ async function get_listRandom (_obj) {
 }
 // 生成 菜系数据
 async function get_list (_obj) {
-  let pagesize = 20
   let page = 1
   for (let i = 0; i < cookingType.length; i++) {
     let item = cookingType[i]
@@ -68,14 +68,13 @@ router.get('/', async (ctx, next) => {
     'title': '/',
     'code': '0',
     'msg': '成功.',
-    'data': obj
+    'data': obj && dateStr
   }
 })
 
 router.get('/get_list', async (ctx, next) => {
   let thisDate = moment().format('YYYY-MM-DD')
   let cookingType = ctx.query.cookingType || 'chuancai'
-  let pagesize = 20
   let page = ctx.query.page || 1
   let data = null
 
