@@ -3,6 +3,13 @@
 * node koa mysql sequelize 增 改 查
 * 数据表关联
 
+```
+// 生成数据 分类列表 随机推荐
+/api/
+/api/get_list
+/api/get_listRandom
+```
+
 ``` js
 User.create({
   userName: userName,
