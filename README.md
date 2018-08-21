@@ -5,7 +5,7 @@
 
 ```
 // 生成数据 分类列表 随机推荐
-/api/
+/api/init
 /api/get_list
 /api/get_listRandom
 ```
