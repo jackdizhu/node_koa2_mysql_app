@@ -8,6 +8,8 @@
 /api/init
 /api/get_list
 /api/get_listRandom
+/api/get_details
+/api/global_dateData
 ```
 
 ``` js
